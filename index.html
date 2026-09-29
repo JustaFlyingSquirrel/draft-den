@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Draft Den: a writing app for novels and the worlds inside them</title>
+  <meta name="description" content="Draft Den keeps your manuscript, your cast, your world and your continuity in one place, on your own computer. Free, offline, and your chapters stay plain text.">
+  <link rel="icon" href="assets/icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <script>if (matchMedia("(min-width: 60rem) and (min-height: 34rem)").matches) document.documentElement.classList.add("pile");</script>
+</head>
+<body>
+
+  <svg width="0" height="0" aria-hidden="true" focusable="false" style="position:absolute">
+    <filter id="pencil">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="4" result="grain" />
+      <feDisplacementMap in="SourceGraphic" in2="grain" scale="1.6" />
+    </filter>
+    <filter id="prop-shadow" x="-30%" y="-30%" width="160%" height="160%">
+      <feDropShadow dx="7" dy="10" stdDeviation="7" flood-color="#3b230f" flood-opacity="0.34" />
+    </filter>
+    <filter id="steam-blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4.5" /></filter>
+  </svg>
+
+  <main class="desk">
+
+    <div class="desk-props" aria-hidden="true">
+      <svg class="prop plant" viewBox="0 0 340 340">
+
+        <defs>
+          <radialGradient id="pot-rim" cx="45%" cy="40%" r="60%"><stop offset="0" stop-color="#f1eee7" /><stop offset="0.8" stop-color="#d9d4c9" /><stop offset="1" stop-color="#c3bdb0" /></radialGradient>
+          <radialGradient id="soil" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#4a3829" /><stop offset="1" stop-color="#2e2219" /></radialGradient>
+          <pattern id="soil-grit" width="7" height="7" patternUnits="userSpaceOnUse">
+            <circle cx="1.5" cy="2" r="0.9" fill="#6b5441" /><circle cx="5" cy="5.5" r="0.7" fill="#1e1610" /><circle cx="5.5" cy="1" r="0.5" fill="#806650" />
+          </pattern>
+          <linearGradient id="lf-back" x1="0" y1="0" x2="0" y2="-1" gradientUnits="objectBoundingBox"><stop offset="0" stop-color="#2d5429" /><stop offset="0.55" stop-color="#3f6b38" /><stop offset="1" stop-color="#2a4d27" /></linearGradient>
+          <linearGradient id="lf-mid" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#3c6a35" /><stop offset="0.5" stop-color="#5a8c4c" /><stop offset="1" stop-color="#3f6f38" /></linearGradient>
+          <linearGradient id="lf-front" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#4f8143" /><stop offset="0.5" stop-color="#78aa62" /><stop offset="1" stop-color="#58894a" /></linearGradient>
+          <filter id="leaf-shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="2.5" dy="3.5" stdDeviation="3" flood-color="#10200c" flood-opacity="0.38" /></filter>
+
+          <symbol id="leaf" overflow="visible">
+            <path d="M0 -4 C -14 2, -40 -10, -44 -40 C -48 -72, -22 -98, 0 -122 C 22 -98, 48 -72, 44 -40 C 40 -10, 14 2, 0 -4 Z" />
+            <path d="M0 -4 C 3 -40, 2 -80, 0 -118" fill="none" stroke="#b8d69a" stroke-opacity="0.55" stroke-width="2.2" stroke-linecap="round" />
+            <path d="M1 -26 C -12 -30, -24 -34, -34 -44 M1 -48 C -10 -54, -20 -60, -28 -72 M1 -70 C -8 -76, -14 -84, -18 -94 M1 -26 C 14 -30, 26 -34, 36 -44 M1 -48 C 12 -54, 22 -60, 30 -72 M1 -70 C 10 -76, 16 -84, 20 -94" fill="none" stroke="#b8d69a" stroke-opacity="0.28" stroke-width="1.2" stroke-linecap="round" />
+            <path d="M0 -4 C -14 2, -40 -10, -44 -40 C -48 -72, -22 -98, 0 -122 C 22 -98, 48 -72, 44 -40 C 40 -10, 14 2, 0 -4 Z" fill="none" stroke="#1d3a1a" stroke-opacity="0.35" stroke-width="1" />
+          </symbol>
+        </defs>
+        <g filter="url(#prop-shadow)">
+          <circle cx="170" cy="170" r="96" fill="url(#pot-rim)" />
+        </g>
+        <circle cx="170" cy="170" r="82" fill="#b9b3a6" />
+        <circle cx="170" cy="170" r="79" fill="url(#soil)" />
+        <circle cx="170" cy="170" r="79" fill="url(#soil-grit)" opacity="0.7" />
+        <circle cx="170" cy="170" r="79" fill="none" stroke="#1b140e" stroke-opacity="0.5" stroke-width="6" />
+        <g class="leaves">
+          <use href="#leaf" fill="url(#lf-back)" transform="translate(163.8 186.9) rotate(200) scale(0.97 0.89)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-back)" transform="translate(155.0 175.5) rotate(250) scale(0.92 0.90)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-back)" transform="translate(157.1 154.7) rotate(320) scale(1.01 0.94)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-back)" transform="translate(176.2 153.1) rotate(20) scale(0.92 0.90)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-back)" transform="translate(185.0 175.5) rotate(110) scale(0.97 0.89)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-mid)" transform="translate(174.1 181.3) rotate(160) scale(0.87 0.85)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-mid)" transform="translate(160.3 167.4) rotate(285) scale(0.92 0.80)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-mid)" transform="translate(179.8 163.1) rotate(55) scale(0.87 0.81)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-mid)" transform="translate(169.3 162.0) rotate(355) scale(0.78 0.77)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-front)" transform="translate(165.8 174.2) rotate(225) scale(0.74 0.68)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-front)" transform="translate(173.9 169.0) rotate(75) scale(0.72 0.70)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-front)" transform="translate(171.3 171.5) rotate(140) scale(0.64 0.56)" filter="url(#leaf-shadow)" />
+          <use href="#leaf" fill="url(#lf-front)" transform="translate(168.3 169.0) rotate(300) scale(0.66 0.61)" filter="url(#leaf-shadow)" />
+        </g>
+      </svg>
+
+      <svg class="prop notebook" viewBox="0 0 250 320">
+
+        <defs>
+          <linearGradient id="cover" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#35574a" /><stop offset="1" stop-color="#243f35" /></linearGradient>
+          <pattern id="grain-leather" width="6" height="6" patternUnits="userSpaceOnUse">
+            <rect width="6" height="6" fill="transparent" /><circle cx="1.5" cy="2" r="0.7" fill="#000" opacity="0.12" /><circle cx="4.5" cy="4.8" r="0.6" fill="#fff" opacity="0.05" />
+          </pattern>
+        </defs>
+        <g filter="url(#prop-shadow)">
+          <rect x="30" y="18" width="196" height="276" rx="12" fill="#efeadd" />
+          <rect x="24" y="14" width="196" height="276" rx="12" fill="url(#cover)" />
+          <rect x="24" y="14" width="196" height="276" rx="12" fill="url(#grain-leather)" />
+          <path d="M142 290 L142 312 L150 304 L158 312 L158 290 Z" fill="#7d2b27" />
+        </g>
+        <rect x="24" y="14" width="18" height="276" rx="9" fill="#1d332b" opacity="0.45" />
+        <rect x="58" y="92" width="130" height="56" rx="4" fill="#f7f3e8" />
+        <rect x="63" y="97" width="120" height="46" rx="2" fill="none" stroke="#c9bfa8" stroke-width="1" />
+        <text id="notebook-name" x="123" y="129" text-anchor="middle" class="notebook-name"></text>
+        <rect x="194" y="14" width="9" height="276" fill="#16241f" />
+        <rect x="194" y="14" width="3" height="276" fill="#2d463c" />
+      </svg>
+
+      <svg class="prop cards" viewBox="0 0 280 230">
+        <g filter="url(#prop-shadow)">
+          <g transform="rotate(9 140 115)">
+            <rect x="28" y="40" width="226" height="146" rx="3" fill="#fbf9f1" />
+          </g>
+          <g transform="rotate(-4 140 115)">
+            <rect x="20" y="32" width="226" height="146" rx="3" fill="#fffef7" />
+            <line x1="20" y1="62" x2="246" y2="62" stroke="#c9564c" stroke-width="1.2" />
+            <g stroke="#bcd5e6" stroke-width="1">
+              <line x1="20" y1="86" x2="246" y2="86" /><line x1="20" y1="110" x2="246" y2="110" />
+              <line x1="20" y1="134" x2="246" y2="134" /><line x1="20" y1="158" x2="246" y2="158" />
+            </g>
+            <text x="34" y="56" class="card-hand">Emma</text>
+            <text x="34" y="82" class="card-hand small">17, wounded (ch. 12)</text>
+            <text x="34" y="106" class="card-hand small">owes Tom a life</text>
+            <text x="34" y="130" class="card-hand small">afraid of deep water?</text>
+          </g>
+        </g>
+        <path d="M112 22 L112 62 C 112 74, 130 74, 130 62 L130 16 C 130 6, 118 6, 118 16 L118 56" fill="none" stroke="#9aa3ab" stroke-width="3.2" stroke-linecap="round" />
+      </svg>
+
+      <svg class="prop drafts" viewBox="0 0 300 330">
+
+        <g filter="url(#prop-shadow)">
+          <rect x="44" y="30" width="226" height="286" fill="#f6f5ee" transform="rotate(7 157 173)" />
+          <rect x="30" y="26" width="226" height="286" fill="#fbfaf5" transform="rotate(-4 143 169)" />
+          <g transform="rotate(2 150 170)">
+            <rect x="36" y="22" width="226" height="286" fill="#fffffb" />
+            <circle cx="214" cy="248" r="34" fill="none" stroke="#b58a5e" stroke-width="3" opacity="0.22" />
+            <circle cx="214" cy="248" r="31" fill="none" stroke="#b58a5e" stroke-width="1.2" opacity="0.18" />
+            <text x="56" y="62" class="scribble title">drafting ideas</text>
+            <path d="M56 70 C 100 66, 150 72, 196 67" class="scribble-line" />
+            <text x="58" y="100" class="scribble">- Mr Hale kept the key?</text>
+            <text x="58" y="128" class="scribble">- ch. 14: storm at sea</text>
+            <text x="58" y="156" class="scribble">- Emma lies to Tom</text>
+            <path d="M58 150 C 110 147, 150 152, 186 148" class="scribble-line strike-out" />
+            <text x="58" y="184" class="scribble">- who fires the gun??</text>
+            <path d="M200 176 C 222 170, 236 150, 226 128" class="scribble-line" />
+            <path d="M220 134 L 226 126 L 233 134" class="scribble-line" />
+            <text x="58" y="212" class="scribble">- map: river through Rye</text>
+            <path d="M66 244 C 70 232, 88 232, 90 244 C 92 256, 72 258, 70 248" class="scribble-line doodle" />
+            <path d="M104 238 L 110 250 L 122 250 L 112 258 L 116 270 L 104 262 L 92 270 L 96 258 L 86 250 L 98 250 Z" class="scribble-line doodle" />
+          </g>
+        </g>
+      </svg>
+
+      <svg class="prop mug" viewBox="0 0 250 230">
+        <defs>
+          <radialGradient id="glaze" cx="42%" cy="38%" r="65%"><stop offset="0" stop-color="#fdfbf6" /><stop offset="1" stop-color="#ddd6c8" /></radialGradient>
+          <radialGradient id="coffee" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#5b341d" /><stop offset="0.8" stop-color="#3f2416" /><stop offset="0.92" stop-color="#8d5d36" /><stop offset="1" stop-color="#6a4226" />
+          </radialGradient>
+          <pattern id="cork" width="9" height="9" patternUnits="userSpaceOnUse">
+            <rect width="9" height="9" fill="#c49769" /><circle cx="2" cy="3" r="1.1" fill="#a97b50" /><circle cx="6.5" cy="7" r="0.9" fill="#d8b085" />
+          </pattern>
+        </defs>
+        <circle cx="110" cy="122" r="96" fill="url(#cork)" filter="url(#prop-shadow)" />
+        <rect x="150" y="104" width="74" height="38" rx="19" fill="url(#glaze)" filter="url(#prop-shadow)" />
+        <rect x="166" y="114" width="44" height="18" rx="9" fill="#c49769" />
+        <circle cx="110" cy="122" r="68" fill="url(#glaze)" filter="url(#prop-shadow)" />
+        <circle cx="110" cy="122" r="57" fill="url(#coffee)" />
+        <ellipse cx="92" cy="104" rx="18" ry="8" fill="#fff" opacity="0.16" transform="rotate(-32 92 104)" />
+        <g class="steam" fill="none" stroke="#fff" stroke-linecap="round" filter="url(#steam-blur)">
+          <path class="wisp w1" d="M96 126 C 80 108, 112 96, 96 74 C 84 58, 108 44, 96 26" stroke-width="10" />
+          <path class="wisp w2" d="M120 118 C 138 100, 108 84, 128 62 C 142 46, 122 32, 136 16" stroke-width="8" />
+          <path class="wisp w3" d="M108 132 C 100 110, 128 98, 112 70" stroke-width="12" />
+        </g>
+      </svg>
+
+      <svg class="prop pen" viewBox="0 0 40 310">
+        <defs>
+          <linearGradient id="resin" x1="0" x2="1"><stop offset="0" stop-color="#3b4356" /><stop offset="0.45" stop-color="#151923" /><stop offset="1" stop-color="#2b3142" /></linearGradient>
+          <linearGradient id="gold" x1="0" x2="1"><stop offset="0" stop-color="#e5c77d" /><stop offset="0.5" stop-color="#b8903f" /><stop offset="1" stop-color="#dcbc6c" /></linearGradient>
+        </defs>
+        <g filter="url(#prop-shadow)">
+          <rect x="9" y="8" width="22" height="236" rx="11" fill="url(#resin)" />
+          <rect x="9" y="96" width="22" height="7" fill="url(#gold)" />
+          <rect x="17" y="12" width="6" height="78" rx="3" fill="url(#gold)" />
+          <path d="M12 244 L28 244 L20 302 Z" fill="url(#gold)" />
+          <line x1="20" y1="256" x2="20" y2="298" stroke="#6d5320" stroke-width="1" />
+        </g>
+      </svg>
+
+      <svg class="prop pencil" viewBox="0 0 30 330">
+        <g filter="url(#prop-shadow)">
+          <rect x="5" y="30" width="20" height="248" fill="#e8b73c" />
+          <rect x="12" y="30" width="6" height="248" fill="#f2cb5c" />
+          <rect x="5" y="14" width="20" height="18" fill="#b9bec4" />
+          <rect x="5" y="2" width="20" height="14" rx="4" fill="#e39a9a" />
+          <path d="M5 278 L25 278 L15 318 Z" fill="#ecd1a5" />
+          <path d="M11.5 304 L18.5 304 L15 318 Z" fill="#3c3f45" />
+        </g>
+      </svg>
+
+      <svg class="prop crumple" viewBox="0 0 126 116">
+
+        <g filter="url(#prop-shadow)" stroke="#d2d0c8" stroke-width="0.8" stroke-linejoin="round">
+          <path d="M26 30 L44 14 L48 44 Z" fill="#f6f5ef" />
+          <path d="M44 14 L70 10 L76 40 L48 44 Z" fill="#e9e7df" />
+          <path d="M70 10 L92 20 L76 40 Z" fill="#fbfaf6" />
+          <path d="M92 20 L108 38 L76 40 Z" fill="#dcd9d0" />
+          <path d="M108 38 L110 62 L86 66 L76 40 Z" fill="#eceae3" />
+          <path d="M110 62 L100 86 L86 66 Z" fill="#d6d3ca" />
+          <path d="M100 86 L78 102 L56 74 L86 66 Z" fill="#f4f3ed" />
+          <path d="M78 102 L50 104 L56 74 Z" fill="#e4e2da" />
+          <path d="M50 104 L28 92 L36 66 L56 74 Z" fill="#d9d6cd" />
+          <path d="M28 92 L16 76 L36 66 Z" fill="#f2f1eb" />
+          <path d="M16 76 L20 58 L36 66 Z" fill="#e6e4dc" />
+          <path d="M20 58 L26 30 L48 44 L36 66 Z" fill="#f8f7f2" />
+          <path d="M48 44 L76 40 L86 66 L56 74 L36 66 Z" fill="#fdfcf9" />
+        </g>
+      </svg>
+    </div>
+
+    <div class="stack" id="stack">
+     <div class="frame" id="frame">
+
+    <article class="sheet title-sheet" aria-labelledby="title">
+      <div class="title-head">
+        <p class="address">
+          Draft Den<br>
+          A writing app for novels<br>
+          and the worlds inside them<br>
+          Free, offline, yours
+        </p>
+        <p class="wordcount">about 90,000 words</p>
+      </div>
+
+      <div class="title-block">
+        <h1 id="title"><img class="title-logo" src="assets/logo.svg" alt="Draft Den" width="477" height="135"></h1>
+        <p class="byline">
+          <label for="author">by</label>
+          <input id="author" name="author" type="text" autocomplete="name" placeholder="your name" maxlength="40" spellcheck="false">
+        </p>
+        <p class="byline-hint pencil-hand" aria-hidden="true">yes, you. type it in</p>
+      </div>
+
+      <div class="opening">
+        <p class="first-line">
+          Writing a long book means keeping
+          <span class="edit"><span class="struck">a wiki, three spreadsheets and a corkboard</span><svg class="strike" viewBox="0 0 400 20" preserveAspectRatio="none" aria-hidden="true"><path d="M2 12 C 90 6, 200 15, 398 8" /></svg><span class="caret-insert pencil-hand" aria-hidden="true">one app</span></span><span class="visually-hidden"> (the editor crossed that out and wrote: one app)</span>.
+        </p>
+        <p>
+          Draft Den is where you write the manuscript, and also where you keep
+          everyone in it, every place they go, and every promise the story makes.
+          It runs on your own computer, needs no account, and never needs the internet.
+        </p>
+        <p class="cta-line">
+          <a class="cta" href="#download">
+            <span>Download Draft Den</span>
+            <svg class="circle" viewBox="0 0 300 70" preserveAspectRatio="none" aria-hidden="true"><path d="M150 6 C 60 4, 8 18, 10 36 C 12 58, 90 66, 160 64 C 240 62, 294 52, 290 32 C 286 12, 220 4, 130 9" /></svg>
+          </a>
+          <span class="cta-note">free, for Linux, Windows and macOS</span>
+        </p>
+      </div>
+    </article>
+
+    <article class="sheet" aria-labelledby="ch1">
+      <header class="running-head"><span data-surname>Writer</span> / Draft Den / 2</header>
+      <h2 id="ch1" class="chapter"><span class="chapter-no">Chapter One</span>The page</h2>
+
+      <div class="para">
+        <p>
+          You open the app and there is the page. Bold, italics, headings, quotes, lists:
+          the usual, out of your way. It saves itself half a second after you stop typing,
+          and every chapter is a plain Markdown file in a folder you own. If Draft Den
+          vanished tomorrow, your book would still open in any text editor.
+        </p>
+        <aside class="margin" aria-label="Editor's note">plain text, always. no lock-in</aside>
+      </div>
+
+      <div class="para">
+        <p>
+          A chapter breaks into scenes. A scene owns its paragraphs, so it moves, counts
+          its own words and disappears with them, like scenes in a real draft. Select a
+          sentence and pin a private note to it, or a numbered footnote that ships with
+          the book.
+        </p>
+        <aside class="margin" aria-label="Editor's note">scenes, notes and footnotes</aside>
+      </div>
+
+      <p class="scene-break" aria-label="Scene break">#</p>
+
+      <div class="para">
+        <p>
+          When you need the room to go quiet, focus mode leaves only the page. When you
+          wander too far, chapter versions let you walk the prose back to where it
+          was yesterday. Spelling is checked in several languages and grammar in English,
+          all on your machine, without a single word leaving it.
+        </p>
+        <aside class="margin" aria-label="Editor's note">focus mode, versions, offline spellcheck</aside>
+      </div>
+    </article>
+
+    <article class="sheet" aria-labelledby="ch2">
+      <header class="running-head"><span data-surname>Writer</span> / Draft Den / 3</header>
+      <h2 id="ch2" class="chapter"><span class="chapter-no">Chapter Two</span>The people in it</h2>
+
+      <div class="para">
+        <p>
+          By chapter twelve you have forty names and a bad memory. Draft Den reads your
+          prose as you write and quietly underlines the people and places it knows.
+          Hover one:
+        </p>
+        <aside class="margin" aria-label="Editor's note">it knows her nicknames too</aside>
+      </div>
+
+      <figure class="exhibit mention-demo">
+        <p class="typed">
+          "You are late," said
+          <span class="mention" tabindex="0" aria-describedby="emma-card">Emma</span>,
+          and did not look up from the map.
+          <span class="mention-card" id="emma-card" role="tooltip">
+            <span class="card-head"><strong>Emma</strong><span class="card-sub">as of chapter 12</span></span>
+            <span class="card-row">age 17</span>
+            <span class="card-row">status: wounded <span class="card-was">(whole in ch. 3)</span></span>
+            <span class="card-row">last seen: chapter 11</span>
+          </span>
+        </p>
+        <figcaption>Every character's state, as of the chapter you are in.</figcaption>
+      </figure>
+
+      <div class="para">
+        <p>
+          Open a chapter and a short note says who is in it, when each of them was last
+          seen and what has changed since. And when you step back, a grid shows the whole
+          cast across the whole book:
+        </p>
+        <aside class="margin" aria-label="Editor's note">the "Previously" strip</aside>
+      </div>
+
+      <figure class="exhibit presence-demo">
+        <div class="typed-grid" role="img" aria-label="A presence grid: Emma appears in most chapters, Tom in the middle ones, and Mr Hale only in chapters 5 and 12.">
+          <div class="grid-row grid-head" aria-hidden="true"><span class="grid-name"></span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span><span>12</span></div>
+          <div class="grid-row"><span class="grid-name">Emma</span><span class="shade">▓</span><span class="shade">█</span><span class="shade">▒</span><span class="shade">░</span><span>·</span><span class="shade">▓</span><span class="shade">█</span><span class="shade">▒</span><span class="shade">▓</span><span class="shade">█</span><span class="shade">█</span><span class="shade">▒</span></div>
+          <div class="grid-row"><span class="grid-name">Tom</span><span class="shade">░</span><span>·</span><span class="shade">▓</span><span class="shade">█</span><span class="shade">▒</span><span class="shade">▓</span><span class="shade">█</span><span class="shade">▒</span><span>·</span><span>·</span><span class="shade">░</span><span class="shade">▓</span></div>
+          <div class="grid-row"><span class="grid-name">Mr Hale</span><span>·</span><span>·</span><span>·</span><span>·</span><span class="shade">█</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span class="shade">█</span></div>
+        </div>
+        <p class="margin-inline pencil-hand">gone six chapters. on purpose?</p>
+        <figcaption>Who appears where, chapter by chapter, and who has been missing for too long.</figcaption>
+      </figure>
+    </article>
+
+    <article class="sheet" aria-labelledby="ch3">
+      <header class="running-head"><span data-surname>Writer</span> / Draft Den / 4</header>
+      <h2 id="ch3" class="chapter"><span class="chapter-no">Chapter Three</span>Keeping promises</h2>
+
+      <div class="para">
+        <p>
+          Every book makes promises. A gun on the wall in chapter two owes the reader a
+          shot. Mark the line where you plant it, mark the line where it pays off, and
+          Draft Den keeps the ledger. Open promises wait on your home screen, oldest first.
+        </p>
+        <aside class="margin" aria-label="Editor's note">setups and payoffs</aside>
+      </div>
+
+      <figure class="exhibit promise-demo">
+        <div class="promise">
+          <p class="typed"><span class="ch">ch. 2</span> Above the mantel hung <span class="setup">a rusted gun</span> nobody had fired in years.</p>
+          <p class="typed"><span class="ch">ch. 11</span> Her hand found the mantel, and <span class="payoff">the gun was loaded</span>.</p>
+          <span class="bracket" aria-hidden="true"></span>
+          <span class="bracket-note pencil-hand">kept!</span>
+        </div>
+        <figcaption>A setup, and the passage that pays it off.</figcaption>
+      </figure>
+
+      <div class="para">
+        <p>
+          It also notices when the story contradicts itself. A character you killed in
+          chapter nine walks into chapter fourteen. Someone is in two cities on the same
+          morning. The prose calls a girl twenty when her birthday says seventeen.
+        </p>
+        <aside class="margin" aria-label="Editor's note">continuity checks, no AI</aside>
+      </div>
+
+      <figure class="exhibit error-demo">
+        <p class="typed">
+          The 20-year-old <span class="flagged">Emma</span> smiled.
+        </p>
+        <p class="red-note pencil-hand">she's 17 here. born 1983, and it's 2000</p>
+      </figure>
+    </article>
+
+    <article class="sheet" aria-labelledby="ch4">
+      <header class="running-head"><span data-surname>Writer</span> / Draft Den / 5</header>
+      <h2 id="ch4" class="chapter"><span class="chapter-no">Chapter Four</span>The world</h2>
+
+      <div class="para">
+        <p>
+          Your world gets its own shelves. Characters, places and cultures have pages with
+          portraits, galleries, relationships and facts that change over time: an eye
+          lost in a battle stays lost in every later chapter, and not a page before.
+        </p>
+        <aside class="margin" aria-label="Editor's note">state over time</aside>
+      </div>
+
+      <div class="para">
+        <p>
+          Describe your continents, kingdoms and cities, and Draft Den paints the map from
+          them, coasts, rivers, roads and borders, in the style of an old atlas. Build your
+          own calendar with its months, weekdays and eras, and the timeline puts every
+          event on it.
+        </p>
+        <aside class="margin" aria-label="Editor's note">painted maps, your own calendar</aside>
+      </div>
+
+      <figure class="exhibit map-demo">
+        <svg viewBox="0 0 520 190" role="img" aria-label="A sketch of a map: a coastline, a river, and three cities joined by a road.">
+          <g class="sketch">
+            <path class="coast" d="M20 150 C 60 110, 70 60, 130 50 C 190 40, 210 20, 280 30 C 350 40, 380 20, 440 45 C 490 65, 500 110, 470 150" />
+            <path class="river" d="M280 34 C 270 70, 300 90, 280 120 C 265 142, 290 160, 300 178" />
+            <path class="road" d="M150 110 L 240 95 L 360 108" />
+            <circle cx="150" cy="110" r="5" /><circle cx="240" cy="95" r="5" /><circle cx="360" cy="108" r="7" />
+          </g>
+          <text x="118" y="132" class="map-label">Ashford</text>
+          <text x="222" y="84" class="map-label">Rye</text>
+          <text x="340" y="130" class="map-label">London, the capital</text>
+        </svg>
+        <figcaption>Drawn from what you wrote about each place.</figcaption>
+      </figure>
+    </article>
+
+    <article class="sheet" aria-labelledby="ch5">
+      <header class="running-head"><span data-surname>Writer</span> / Draft Den / 6</header>
+      <h2 id="ch5" class="chapter"><span class="chapter-no">Chapter Five</span>Yours alone</h2>
+
+      <div class="para">
+        <p>
+          Draft Den lives on your computer. There is no account to make, nothing to
+          subscribe to, and no one reading over your shoulder: no tracking, no cloud, no
+          AI trained on your pages. Signed backups let you carry the whole vault anywhere.
+        </p>
+        <aside class="margin" aria-label="Editor's note">offline, private, backed up</aside>
+      </div>
+
+      <div class="para">
+        <p>
+          When the book is done, it becomes an EPUB or a print-ready PDF with your cover
+          on the first page. For your editor, translator or cover artist there is a series
+          bible: one page about your world as of any chapter, with nothing from later on.
+        </p>
+        <aside class="margin" aria-label="Editor's note">EPUB, PDF, spoiler-safe bible</aside>
+      </div>
+
+      <div class="para">
+        <p>
+          The app speaks English, French, Spanish, Italian and Arabic, and writes left to
+          right or right to left.
+        </p>
+      </div>
+    </article>
+
+    <article class="sheet end-sheet" id="download" aria-labelledby="the-end">
+      <header class="running-head"><span data-surname>Writer</span> / Draft Den / 7</header>
+      <h2 id="the-end" class="the-end">The End</h2>
+      <p class="end-sub">Or rather, the first page of yours.</p>
+
+      <ul class="downloads">
+        <li>
+          <details class="dl-builds">
+            <summary class="dl" data-os="linux">Download for Linux <span class="dl-caret" aria-hidden="true">▾</span></summary>
+            <ul class="dl-list" data-builds="linux">
+              <li><a href="#download">AppImage</a><span class="dl-note">any distribution, no install</span></li>
+              <li><a href="#download">.deb</a><span class="dl-note">Debian, Ubuntu, Mint</span></li>
+              <li><a href="#download">.rpm</a><span class="dl-note">Fedora, openSUSE</span></li>
+            </ul>
+          </details>
+        </li>
+        <li><a class="dl" href="#download" data-os="windows" data-build="windows">Download for Windows</a><span class="dl-note">installer</span></li>
+        <li data-build-li="mac"><span class="dl dl-soon" data-os="mac" aria-disabled="true">Download for macOS</span><span class="dl-note">coming soon</span></li>
+      </ul>
+      <p class="end-version" data-release-line>Beta release v0.1.0</p>
+      <p class="end-fine">Free. No account. Works offline.</p>
+      <p class="scene-break" aria-hidden="true"># # #</p>
+    </article>
+     </div>
+    </div>
+
+    <p class="visually-hidden" id="page-status" aria-live="polite"></p>
+    <p class="flip-hint pencil-hand" aria-hidden="true">turn the page: scroll, or use ← →</p>
+  </main>
+  <script src="release.js" defer></script>
+  <script src="main.js" defer></script>
+</body>
+</html>
